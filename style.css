@@ -10,7 +10,7 @@
 
 /* reset */
 html {
-  font-size: 16px;
+  font-size: 18px;
   line-height: 24px;
   scroll-behavior: smooth;
 }
@@ -49,12 +49,14 @@ button {
   font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
-h2 {
-  font-weight: 900;
+/* Mobile */
+.logo {
+  padding: 24px 0;
 }
 
-/* header */
-header {
+/* preOrder page */
+
+#preOrder header {
   background-image: url('/images/header/background-pattern.png');
   display: flex;
   flex-direction: column;
@@ -66,10 +68,6 @@ header {
   display: flex;
   align-items: center;
   flex-direction: column;
-}
-
-.logo {
-  margin: 24px 0 17px;
 }
 
 .delivery {
@@ -137,15 +135,15 @@ header {
 }
 
 /* items */
-main {
+#preOrder main {
   padding-bottom: 38px;
 }
 
-section#broth {
+#preOrder section#broth {
   margin-top: 40px;
 }
 
-section#meat {
+#preOrder section#meat {
   margin-top: 62px;
 }
 
@@ -160,8 +158,44 @@ section#meat {
 
 .section-subtitle {
   text-align: center;
-  margin-bottom: 32px;
   padding: 0 16px;
+}
+
+/* Carousel */
+#preOrder .carousel {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  z-index: 10;
+}
+
+.carousel-container {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  overflow-x: scroll;
+  padding: 32px 16px 24px;
+  gap: 0 16px;
+}
+
+.carousel-panel {
+  grid-row: 2;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.carousel-panel button {
+  height: 12px;
+  width: 12px;
+  background-color: #e0dbbf;
+  transition: 0.3s;
+  border-radius: 8px;
+  border: none;
+}
+
+.carousel-panel button.active {
+  background-color: var(--red);
+  width: 36px;
+  border-radius: 8px;
 }
 
 .item {
@@ -216,49 +250,9 @@ section#meat {
   color: var(--red);
 }
 
-/* Carousel */
-
-.carousel {
-  display: grid;
-  grid-template-rows: 1fr auto;
-  z-index: 10;
-}
-
-.carousel-container {
-  display: grid;
-  grid-template-columns: repeat(3, auto);
-  overflow-x: scroll;
-  scrollbar-width: 0px;
-  scroll-padding-block-start: 0;
-  padding: 24px 16px;
-  gap: 16px;
-}
-
-.carousel-panel {
-  grid-row: 2;
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-}
-
-.carousel-panel button {
-  height: 12px;
-  width: 12px;
-  background-color: #e0dbbf;
-  transition: 0.3s;
-  border-radius: 8px;
-  border: none;
-}
-
-.carousel-panel button.active {
-  background-color: var(--red);
-  width: 36px;
-  border-radius: 8px;
-}
-
 /* Ctas */
 
-.cta-submit, .button-order-now {
+.button {
   color: white;
   font-weight: 800;
   font-size: var(--font-small);
@@ -270,7 +264,7 @@ section#meat {
   background-color: #c5c5c5;
   margin: 48px auto 0;
   position: relative;
-  width: 213px;
+  width: 235px;
   height: 60px;
   display: flex;
   align-items: center;
@@ -284,16 +278,122 @@ section#meat {
   display: none;
 }
 
+/* posOrder page */
+#posOrder header {
+  height: 100vh;
+  width: 100%;
+  background-image: url('/images/pattern-azul.png');
+  background-size: 145%;
+  background-position: 69px 37px;
+  display: grid;
+  grid-template-rows: 107px auto 1fr;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  align-items: start;
+}
+
+#posOrder .chosen-food {
+  grid-row: 2;
+}
+
+#posOrder .chosen-food img {
+  margin: 0 auto;
+}
+
+#posOrder .chosen-food-text {
+  position: absolute;
+  top: 471px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#posOrder .chosen-food-text h2 {
+  width: 270px;
+  margin-top: 18px;
+  text-align: center;
+  line-height: 2rem;
+  font-size: var(--font-medium);
+  font-weight: 900;
+  color: var(--yellow);
+}
+
+#posOrder .chosen-food-text p {
+  font-size: var(--font-medium);
+  line-height: 1.5rem;
+  color: white;
+  font-weight: 900;
+  text-align: center;
+}
+
+#posOrder main {
+  margin: 71px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+#posOrder main figure img{
+  margin: 0 auto;
+}
+
+#posOrder main figure p {
+  color: var(--yellow);
+  font-size: var(--font-medium);
+  font-weight: 900;
+  margin-top: 18px;
+  line-height: 1.5rem;
+  letter-spacing: 1px;
+}
+
+#posOrder main h1 {
+  text-align: center;
+  margin-top: 15px;
+  width: 325px;
+  font-weight: 900;
+  color: var(--red);
+  font-size: var(--font-medium);
+}
+
+#posOrder main p {
+  margin-top: 24px;
+  text-align: center;
+  width: 325px;
+  letter-spacing: -0.8px;
+}
+
+#posOrder .button-new-order {
+  background-color: var(--blue);
+}
+
+#posOrder .button-new-order span {
+  background-image: url(/images/icons/arrow-yellow.svg);
+  background-size:cover;
+  background-position: center;
+  width: 23px;
+  height: 16px;
+}
+
 @media(min-width:1005px) {
+  html {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
   /* header */
   #preOrder header {
     height: 768px;
   }
+
   .logo {
     position: absolute;
     left: 0;
-    padding-left: 40px;
     top: 0;
+    padding-left: 40px;
+    padding-top: 44px;
   }
 
   .header-container {
@@ -372,69 +472,4 @@ section#meat {
   }
 }
 
-/* Sucess Page */
-
-#posOrder {
-  display: flex;
-  width: 100vw;
-  height: 100vh;
-}
-
-#posOrder header {
-  height: 100vh;
-  width: 50vw;
-  background-image: url('/images/pattern-azul.png');
-  background-size: contain;
-  display: flex;
-  justify-content: center;
-}
-
-#posOrder .logo {
-  top: 0;
-  left: 0;
-  padding-left: 40px;
-  padding-top: 43px;
-}
-
-#posOrder .chosen-food {
-  align-items: center;
-}
-
-#posOrder .chosen-food-text p {
-  font-size: var(--font-medium);
-  line-height: 1.5rem;
-  color: white;
-  font-weight: 900;
-  text-align: center;
-}
-
-#posOrder .chosen-food-text h2 {
-  color: var(--yellow);
-  font-size: 2rem;
-  line-height: 2.97rem;
-}
-
-/* Greetings page */
-
-#posOrder main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  width: 50vw;
-}
-
-#posOrder main figure img{
-  margin: 0 auto;
-}
-
-#posOrder main figure p {
-  color: var(--yellow);
-  font-size: var(--font-medium);
-  font-weight: 900;
-  margin-top: 20px;
-  line-height: 1.5rem;
-  letter-spacing: 1px;
-}
 

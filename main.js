@@ -11,8 +11,8 @@ const sections = document.querySelectorAll('section');
 function chooseIngredients(item, section) {
   const ingredient = section.dataset.ingredient;
   const itemName = item.querySelector('.item-title');
-  const itemNameFilter = itemName.innerText.replace(' ', '_').toLowerCase();
-  ingredients[ingredient] = itemNameFilter; //ingredients.broth:{'Salt'}
+  const itemNameAPI = itemName.innerText.replace(' ', '_').toLowerCase();
+  ingredients[ingredient] = itemNameAPI; //ingredients.broth:{'yasai_vegetarian'}
   console.log(ingredients);
 }
 
@@ -60,4 +60,11 @@ function replacePage(htmlText) {
 
   preOrderPage.innerHTML = posOrderPage.innerHTML;
   preOrderPage.setAttribute('id', 'posOrder');
+
+  console.log(newOrderButton);
+  newOrderButton.addEventListener('click', onHome);
+}
+
+function onHome() {
+  location.href = 'index.html';
 }

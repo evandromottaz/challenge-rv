@@ -3,15 +3,16 @@ export class Carousel {
     this.carousels = document.querySelectorAll(carousel);
     this.panels = document.querySelectorAll(panel);
     this.dist = { finalPosition: 0, firstPositionX: 0, movement: 0 };
-    this.activeClass = 'active';
+    this.activeClass = { mouse: 'active', chosen: 'selected' };
   }
 
   controller(panel, totalItems) {
-    for (let i = 0; i < totalItems.length; i++) {
+    totalItems.forEach(() => {
       const createButton = document.createElement('button');
       panel.appendChild(createButton);
-    }
+    });
 
+    // for SEO
     const buttons = panel.querySelectorAll('button');
     buttons.forEach((button) => {
       button.setAttribute('type', 'button');
@@ -23,9 +24,8 @@ export class Carousel {
 
   onClick(item) {
     item.addEventListener('click', (event) => {
-      return event;
+      item.classList.add(this.activeClass);
     });
-    // item.classList.toggle(this.activeClass);
   }
 
   onLeave(img, itemTitle, changed) {
@@ -33,17 +33,6 @@ export class Carousel {
       img.src = `/images/icons/${itemTitle.toLowerCase()}/inactive.svg`;
     }
     img.src = `/images/icons/${itemTitle.toLowerCase()}/inactive.svg`;
-  }
-
-  onHover(item) {
-    const itemTitle = item.querySelector('.item-title').innerText;
-    let changed = true;
-    const img = item.querySelector('img');
-    img.src = `/images/icons/${itemTitle.toLowerCase()}/active.svg`;
-
-    item.addEventListener('mouseleave', () =>
-      this.onLeave(img, itemTitle, changed),
-    );
   }
 
   events(items) {
@@ -67,7 +56,6 @@ export class Carousel {
 
   bind() {
     this.onClick = this.onClick.bind(this);
-    this.onHover = this.onHover.bind(this);
     this.onLeave = this.onLeave.bind(this);
   }
 

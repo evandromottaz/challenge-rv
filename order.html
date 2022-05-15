@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;800;900&display=swap"
+      rel="stylesheet"
+    />
     <title>Order</title>
   </head>
   <body>
@@ -14,7 +20,7 @@
         </figure>
 
         <figure class="chosen-food">
-          <img id="chosenImg" src="" alt="" />
+          <img id="chosenImg" src="/images/api/chasu.png" alt="" />
         </figure>
 
         <div class="chosen-food-text">
@@ -29,6 +35,18 @@
         </figure>
 
         <h1>Your order is being prepared</h1>
+
+        <p>Hold on, when you least expect you will be eating your rámen.</p>
+
+        <button
+          type="button"
+          id="newOrderButton"
+          data-newOrder
+          class="button button-new-order"
+        >
+          Place my order
+          <span> </span>
+        </button>
       </main>
     </div>
 
