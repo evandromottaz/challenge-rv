@@ -32,8 +32,8 @@ export class Carousel {
       item.classList.contains('selected') ||
       item.classList.contains('active')
     )
-      itemImg.src = `/images/icons/${this.itemName(item)}/active.svg`;
-    else itemImg.src = `/images/icons/${this.itemName(item)}/inactive.svg`;
+      itemImg.src = `/assets/${this.itemName(item)}-active.svg`;
+    else itemImg.src = `/assets/${this.itemName(item)}-inactive.svg`;
   }
 
   handleClick(item, items = '') {
