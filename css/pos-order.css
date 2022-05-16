@@ -1,0 +1,97 @@
+/* posOrder page */
+#posOrder header {
+  height: 100vh;
+  width: 100%;
+  background-image: url('/images/pattern-azul.png');
+  background-size: 145%;
+  background-position: 69px 37px;
+  display: grid;
+  grid-template-rows: 107px auto 1fr;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  align-items: start;
+}
+
+#posOrder .chosen-food {
+  grid-row: 2;
+}
+
+#posOrder .chosen-food img {
+  margin: 0 auto;
+}
+
+#posOrder .chosen-food-text {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#posOrder .chosen-food-text p {
+  font-size: 20px;
+  line-height: 24px;
+  color: white;
+  font-weight: 900;
+  text-align: center;
+}
+
+#posOrder .chosen-food-text h2 {
+  width: 270px;
+  margin-top: 18px;
+  text-align: center;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 900;
+  color: var(--yellow);
+}
+
+#posOrder main {
+  margin: 71px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+#posOrder main .greetings img{
+  margin: 0 auto;
+}
+
+#posOrder main .greetings p {
+  color: var(--yellow);
+  font-weight: 900;
+  margin-top: 18px;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 1px;
+}
+
+#posOrder main h1 {
+  text-align: center;
+  margin-top: 15px;
+  width: 325px;
+  font-weight: 900;
+  color: var(--red);
+  font-size: 24px;
+  line-height: 32px;
+}
+
+#posOrder main p {
+  margin-top: 24px;
+  text-align: center;
+  width: 325px;
+}
+
+#posOrder #newOrderButton {
+  background-color: var(--blue);
+  margin-top: 24px;
+}
+
+#posOrder #newOrderButton span {
+  background-image: url(/images/icons/arrow-yellow.svg);
+  background-size:cover;
+  background-position: center;
+  width: 23px;
+  height: 16px;
+}

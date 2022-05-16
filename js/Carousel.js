@@ -2,15 +2,19 @@ export class Carousel {
   constructor(carousel, panel = '') {
     this.carousels = document.querySelectorAll(carousel);
     this.panels = document.querySelectorAll(panel);
-    this.dist = { finalPosition: 0, firstPositionX: 0, movement: 0 };
+    this.movement = { finalPosition: 0, firstPositionX: 0, movement: 0 };
     this.activeClass = { mouse: 'active', selected: 'selected' };
   }
 
-  controller(panel, totalItems) {
+  createButtons(totalItems, panel) {
     totalItems.forEach(() => {
       const createButton = document.createElement('button');
       panel.appendChild(createButton);
     });
+  }
+
+  controller(panel, totalItems) {
+    this.createButtons(totalItems, panel);
 
     // for SEO
     const buttons = panel.querySelectorAll('button');
@@ -23,17 +27,24 @@ export class Carousel {
   }
 
   itemName(item) {
-    return item.querySelector('h3').innerText;
+    return item.querySelector('h3').innerText.toLowerCase().replace(' ', '_');
   }
 
-  replaceImgActive(item) {
-    const itemImg = item.querySelector('img');
+  isActive(item) {
     if (
       item.classList.contains('selected') ||
       item.classList.contains('active')
     )
-      itemImg.src = `/assets/${this.itemName(item)}-active.svg`;
-    else itemImg.src = `/assets/${this.itemName(item)}-inactive.svg`;
+      return true;
+    else false;
+  }
+
+  replaceImgActive(item) {
+    const itemImg = item.querySelector('img');
+    const itemName = this.itemName(item);
+    if (this.isActive(item))
+      itemImg.src = `/images/icons/${itemName}/${itemName}-active.svg`;
+    else itemImg.src = `/images/icons/${itemName}/${itemName}-inactive.svg`;
   }
 
   handleClick(item, items = '') {
@@ -47,14 +58,14 @@ export class Carousel {
   }
 
   onMouseLeave(item) {
-    item.addEventListener('mouseout', () => {
+    item.addEventListener('mouseleave', () => {
       item.classList.remove('active');
       this.replaceImgActive(item);
     });
   }
 
   onMouseEnter(item) {
-    item.addEventListener('mouseover', () => {
+    item.addEventListener('mouseenter', () => {
       item.classList.add('active');
       this.replaceImgActive(item);
       this.onMouseLeave(item);
@@ -84,12 +95,12 @@ export class Carousel {
 
   init() {
     this.bind();
-    this.carousels.forEach((carousel) => {
+    this.carousels.forEach((carousel, index) => {
       const container = carousel.querySelector('.carousel-container');
       const items = container.querySelectorAll('.item');
       this.events(items);
 
-      // if (this.panels) this.controller(this.panels[index], items);
+      if (this.panels) this.controller(this.panels[index], items);
     });
   }
 }

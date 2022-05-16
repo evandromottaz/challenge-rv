@@ -1,0 +1,79 @@
+.carousel {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  z-index: 10;
+}
+
+.carousel-container {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  overflow-x: scroll;
+  padding: 32px 16px 24px;
+  gap: 0 16px;
+}
+
+.carousel-panel {
+  grid-row: 2;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.carousel-panel button {
+  height: 12px;
+  width: 12px;
+  background-color: #e0dbbf;
+  transition: 0.3s;
+  border-radius: 8px;
+  border: none;
+}
+
+.carousel-panel button.active {
+  background-color: var(--red);
+  width: 36px;
+  border-radius: 8px;
+}
+
+.item {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 288px;
+  min-height: 316px;
+  box-shadow: 0 4px 10px 2px rgba(224, 219, 191, 0.6);
+  border-radius: 12px;
+  transition: background-color .3s;
+  cursor: pointer;
+}
+
+/* Carousel classes */
+.item.active:hover, .item.active, .item.selected {
+  background-color: var(--blue);
+}
+
+.item.active:hover .item-title, .item.selected .item-title {
+  color: white;
+}
+
+.item.active:hover .item-description, .item.selected .item-description {
+  color: white;
+}
+
+.item.active:hover .item-price, .item.selected .item-price {
+  color: var(--yellow);
+}
+
+/* breakpoints */
+
+@media (min-width:1005px){
+  .carousel-container {
+    justify-items: center;
+    justify-content: center;
+    gap: 64px;
+  }
+
+  .carousel-panel {
+    display: none;
+  }
+}
