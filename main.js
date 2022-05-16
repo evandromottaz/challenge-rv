@@ -43,8 +43,8 @@ async function sucessPage(product) {
   const pageHTML = await pageResponse.text();
   replacePage(pageHTML);
 
-  chosenImg.src = product.image;
-  chosenImg.alt = product.name;
+  // chosenImg.src = product.image;
+  // chosenImg.alt = product.name;
 
   const chosenFoodText = document.querySelector('.chosen-food-text h2');
   chosenFoodText.innerHTML = product.name;
@@ -53,15 +53,10 @@ async function sucessPage(product) {
 function replacePage(htmlText) {
   const newDiv = document.createElement('div');
   newDiv.innerHTML = htmlText;
-
   const posOrderPage = newDiv.querySelector('#posOrder');
   const preOrderPage = document.querySelector('#preOrder');
-  console.log(preOrderPage);
-
   preOrderPage.innerHTML = posOrderPage.innerHTML;
   preOrderPage.setAttribute('id', 'posOrder');
-
-  console.log(newOrderButton);
   newOrderButton.addEventListener('click', onHome);
 }
 

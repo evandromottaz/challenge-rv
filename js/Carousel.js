@@ -3,7 +3,7 @@ export class Carousel {
     this.carousels = document.querySelectorAll(carousel);
     this.panels = document.querySelectorAll(panel);
     this.dist = { finalPosition: 0, firstPositionX: 0, movement: 0 };
-    this.activeClass = { mouse: 'active', chosen: 'selected' };
+    this.activeClass = { mouse: 'active', selected: 'selected' };
   }
 
   controller(panel, totalItems) {
@@ -22,51 +22,74 @@ export class Carousel {
     this.events(buttons);
   }
 
-  onClick(item) {
-    item.addEventListener('click', (event) => {
-      item.classList.add(this.activeClass);
+  itemName(item) {
+    return item.querySelector('h3').innerText;
+  }
+
+  replaceImgActive(item) {
+    const itemImg = item.querySelector('img');
+    if (
+      item.classList.contains('selected') ||
+      item.classList.contains('active')
+    )
+      itemImg.src = `/images/icons/${this.itemName(item)}/active.svg`;
+    else itemImg.src = `/images/icons/${this.itemName(item)}/inactive.svg`;
+  }
+
+  handleClick(item, items = '') {
+    this.resetActiveClass(items);
+    item.classList.add(this.activeClass.selected);
+    this.replaceImgActive(item);
+  }
+
+  onClick(item, items = '') {
+    item.addEventListener('click', () => this.handleClick(item, items));
+  }
+
+  onMouseLeave(item) {
+    item.addEventListener('mouseout', () => {
+      item.classList.remove('active');
+      this.replaceImgActive(item);
     });
   }
 
-  onLeave(img, itemTitle, changed) {
-    if (img.classList.contains('active')) {
-      img.src = `/images/icons/${itemTitle.toLowerCase()}/inactive.svg`;
-    }
-    img.src = `/images/icons/${itemTitle.toLowerCase()}/inactive.svg`;
+  onMouseEnter(item) {
+    item.addEventListener('mouseover', () => {
+      item.classList.add('active');
+      this.replaceImgActive(item);
+      this.onMouseLeave(item);
+    });
   }
 
   events(items) {
-    items.forEach((item, index) => {
-      item.addEventListener('click', () => {
-        this.resetActiveClass(items);
-        this.onClick(item);
-      });
-
-      if (item.classList.contains('item')) {
-        item.addEventListener('mouseenter', () => {
-          this.onHover(item);
-        });
-      }
+    items.forEach((item) => {
+      this.onClick(item, items);
+      this.onMouseEnter(item);
     });
   }
 
   resetActiveClass(items) {
-    items.forEach((item) => item.classList.remove(this.activeClass));
+    items.forEach((item) => {
+      item.classList.remove(this.activeClass.selected);
+      item.classList.remove(this.activeClass.mouse);
+      this.replaceImgActive(item);
+    });
   }
 
   bind() {
+    this.onMouseEnter = this.onMouseEnter.bind(this);
+    this.onMouseLeave = this.onMouseLeave.bind(this);
     this.onClick = this.onClick.bind(this);
-    this.onLeave = this.onLeave.bind(this);
   }
 
   init() {
     this.bind();
-    this.carousels.forEach((carousel, index) => {
+    this.carousels.forEach((carousel) => {
       const container = carousel.querySelector('.carousel-container');
       const items = container.querySelectorAll('.item');
       this.events(items);
 
-      if (this.panels) this.controller(this.panels[index], items);
+      // if (this.panels) this.controller(this.panels[index], items);
     });
   }
 }

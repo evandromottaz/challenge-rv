@@ -10,7 +10,7 @@
 
 /* reset */
 html {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 24px;
   scroll-behavior: smooth;
 }
@@ -57,11 +57,13 @@ button {
 /* preOrder page */
 
 #preOrder header {
-  background-image: url('/images/header/background-pattern.png');
+  background-image: url('/images/header/pattern-vermelho.svg');
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 30px;
+  background-size: 143%;
+  background-position: 0 -5px;
+  height: 89vh;
 }
 
 .header-container {
@@ -71,7 +73,7 @@ button {
 }
 
 .delivery {
-  width: 289px;
+  width: 262px;
   position: relative;
   display: flex;
   justify-content: center;
@@ -87,7 +89,7 @@ button {
   position: absolute;
   width: 45px;
   height: 50px;
-  top: 22px;
+  top: 0;
   left: 0;
 }
 
@@ -95,7 +97,7 @@ button {
   position: absolute;
   width: 41px;
   height: 95px;
-  top: 37%;
+  top: 96px;
   right: 0;
 }
 
@@ -109,7 +111,7 @@ button {
 }
 
 .japan-header-text {
-  margin: 11px 0;
+  margin: 12px 0 11px;
   color: var(--yellow);
   font-size: 3rem;
   font-weight: 900;
@@ -129,7 +131,6 @@ button {
 .bottom-header-text {
   text-align: center;
   color: #fff;
-  margin-bottom: 66px;
   line-height: 1.25rem;
   width: 300px;
 }
@@ -211,22 +212,6 @@ button {
   cursor: pointer;
 }
 
-.item:hover,.item.active {
-  background-color: var(--blue);
-}
-
-.item:hover .item-title,.item.active .item-title {
-  color: white;
-}
-
-.item:hover .item-description,.item.active .item-description {
-  color: white;
-}
-
-.item:hover .item-price,.item.active .item-price {
-  color: var(--yellow);
-}
-
 .item-title {
   color: var(--blue);
   font-weight: 900;
@@ -239,7 +224,7 @@ button {
   font-size: var(--font-small);
   margin-bottom: 14px;
   text-align: center;
-  max-width: 256px;
+  max-width: 257px;
 }
 
 .item-price {
@@ -273,10 +258,6 @@ button {
   cursor: pointer;
 }
 
-.button-order-now {
-  background-color: var(--blue);
-  display: none;
-}
 
 /* posOrder page */
 #posOrder header {
@@ -377,15 +358,16 @@ button {
   height: 16px;
 }
 
-@media(min-width:1005px) {
-  html {
-    font-size: 16px;
-    line-height: 24px;
-  }
+.button-order-now {
+  display: none;
+}
 
+@media(min-width:1005px) {
   /* header */
   #preOrder header {
     height: 768px;
+    background-size: contain;
+    background-position: -58px 0;
   }
 
   .logo {
@@ -446,7 +428,7 @@ button {
     padding-bottom: 126px;
   }
 
-  section#broth {
+  #preOrder section#broth {
     margin-top: 115px;
   }
 
@@ -457,6 +439,10 @@ button {
 
   .button-order-now {
     display: flex;
+    background-color: var(--blue);
+    position: absolute;
+    left: -123px;
+    top:447px; 
   }
 
   /* carousel */
@@ -472,4 +458,21 @@ button {
   }
 }
 
+/* JS classes */
 
+
+.item:hover,.item.active, .item.selected {
+  background-color: var(--blue);
+}
+
+.item:hover .item-title,.item.active .item-title, .item.selected .item-title {
+  color: white;
+}
+
+.item:hover .item-description,.item.active .item-description, .item.selected .item-description {
+  color: white;
+}
+
+.item:hover .item-price,.item.active .item-price, .item.selected .item-price {
+  color: var(--yellow);
+}
