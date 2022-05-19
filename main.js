@@ -3,6 +3,7 @@ import { Carousel } from './js/Carousel';
 import { ingredients, chooseIngredients } from './js/chooseIngredients';
 
 import { sucessPage } from './js/fetch-food';
+import { onClick, onTouchStart } from './js/Commons';
 
 const carousel1 = new Carousel('.carousel-1');
 const carousel2 = new Carousel('.carousel-2');
@@ -12,9 +13,8 @@ sections.forEach((section) => {
   const items = section.querySelectorAll('.item');
 
   items.forEach((item) => {
-    item.addEventListener('click', ({ currentTarget }) =>
-      chooseIngredients(currentTarget, section),
-    );
+    onClick(item, () => chooseIngredients(item, section));
+    onTouchStart(item, () => chooseIngredients(item, section));
   });
 });
 

@@ -6,18 +6,44 @@ export function createElement(element) {
   return document.createElement(element);
 }
 
-export function removeElement(element) {
-  document.querySelector(element).remove();
+export function onClick(item, handleClick) {
+  item.addEventListener('click', handleClick);
 }
 
-export function onClick(item, handleFunc) {
-  item.addEventListener('click', handleFunc);
+export function onEnter(item, handleEnter) {
+  item.addEventListener('mouseenter', handleEnter);
 }
 
-export function onEnter(item, handleFunc) {
-  item.addEventListener('mouseenter', handleFunc);
+export function onLeave(item, handleLeave) {
+  item.addEventListener('mouseleave', handleLeave);
 }
 
-export function onLeave(item, handleFunc) {
-  item.addEventListener('mouseleave', handleFunc);
+export function onMouseDown(element, handleMouseDown) {
+  element.addEventListener('mousedown', handleMouseDown);
+}
+
+export function onTouchStart(element, handleTouchStart) {
+  element.addEventListener('touchstart', handleTouchStart);
+}
+
+export function onMouseMove(element, handleMouseMove) {
+  element.addEventListener('mousemove', handleMouseMove);
+}
+
+export function onMouseUp(element, handleMouseUp) {
+  element.addEventListener('mouseup', handleMouseUp);
+}
+
+export function onTouchEnd(element, handleTouchEnd) {
+  element.addEventListener('touchend', handleTouchEnd);
+}
+
+export function addClass(element, ...names) {
+  names ? names : [];
+  names.forEach((name) => element.classList.add(name));
+}
+
+export function removeClass(element, ...names) {
+  names ? names : [];
+  names.forEach((name) => element.classList.remove(name));
 }
