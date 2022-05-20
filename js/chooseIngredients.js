@@ -4,7 +4,7 @@ import { sucessPage } from './FetchFood';
 
 export const ingredients = new Object();
 
-export function ChooseIngredients(item, section) {
+export function chooseIngredients(item, section) {
   const ingredient = section.dataset.ingredient;
   const itemName = item.querySelector('.item-title');
   const itemNameAPI = itemName.innerText.replace(' ', '_').toLowerCase();
@@ -31,8 +31,8 @@ sections.forEach((section) => {
   const items = section.querySelectorAll('.item');
 
   items.forEach((item) => {
-    onClick(item, () => ChooseIngredients(item, section));
-    onTouchStart(item, () => ChooseIngredients(item, section));
+    onClick(item, () => chooseIngredients(item, section));
+    onTouchStart(item, () => chooseIngredients(item, section));
   });
 });
 
