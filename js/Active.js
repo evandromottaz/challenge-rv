@@ -1,4 +1,11 @@
-import { addClass, onClick, onEnter, onLeave, onTouchStart } from './Commons';
+import {
+  addClass,
+  cleanNameWithUnderline,
+  onClick,
+  onEnter,
+  onLeave,
+  onTouchStart,
+} from './Commons';
 
 class Active {
   constructor(container) {
@@ -59,6 +66,7 @@ class Active {
     this.items.forEach(({ img, name, item }) => {
       const hasActive = item.classList.contains('active');
       const hasSelected = item.getAttribute('data-selected');
+      name = cleanNameWithUnderline(name);
 
       hasActive || hasSelected
         ? (img.src = `/images/icons/${name}/${name}-active.svg`)

@@ -1,4 +1,4 @@
-import { onClick, onDown, onTouchStart, onUp } from './Commons';
+import { debounce, onClick, onDown, onTouchStart, onUp } from './Commons';
 
 class Carousel {
   constructor(carousel) {
@@ -55,15 +55,15 @@ class Carousel {
   }
 
   changeItemOnEnd() {
-    if (this.dist.movement > 120 && this.index.next !== null)
-      this.activeNextItem();
-    else if (this.dist.movement < -120 && this.index.prev !== null)
-      this.activePrevItem();
+    if (this.dist.movement > 50 && this.index.next !== null)
+      this.changeItem(this.index.next);
+    else if (this.dist.movement < -50 && this.index.prev !== null)
+      this.changeItem(this.index.prev);
     else this.changeItem(this.index.current);
   }
 
   events() {
-    console.log(matchMedia(360));
+    window.addEventListener('resize', this.onResize);
     this.items.forEach(({ item }) => {
       onTouchStart(item, () => this.onClick());
     });
@@ -73,20 +73,6 @@ class Carousel {
 
   onClick() {
     this.dist.movement = 0;
-  }
-
-  init() {
-    this.bind();
-    this.config();
-    this.itemIndex(0);
-    this.events();
-    return this;
-  }
-
-  bind() {
-    this.onStart = this.onStart.bind(this);
-    this.onMove = this.onMove.bind(this);
-    this.onEnd = this.onEnd.bind(this);
   }
 
   // config
@@ -116,10 +102,12 @@ class Carousel {
   itemPosition(item, index) {
     this.lastItem = this.container.querySelectorAll('.item').length - 1;
     if (index === 0) return 0;
-    else if (index > 0 && index < this.lastItem) return -item.offsetWidth;
-    else {
+    else if (index > 0 && index < this.lastItem) {
+      const margin = (-item.offsetWidth + innerWidth) / 2;
+      return -(item.offsetLeft - margin); //posição do elemento - margin da tela
+    } else {
       const gap = window.getComputedStyle(this.container).gap;
-      const containerWidth = +this.container.offsetWidth;
+      const containerWidth = this.container.offsetWidth;
       const itemRight = item.getBoundingClientRect().right;
       const clean = +gap.replace(/px\s?/g, '');
       return -itemRight + containerWidth - clean;
@@ -132,6 +120,31 @@ class Carousel {
       return { item, position };
     });
   }
+
+  onResize() {
+    setTimeout(() => {
+      this.config();
+      this.changeItem(this.index.current);
+      console.log('oi');
+    }, 1000);
+  }
+
+  init() {
+    this.bind();
+    this.config();
+    this.itemIndex(0);
+    this.events();
+    return this;
+  }
+
+  bind() {
+    this.onStart = this.onStart.bind(this);
+    this.onMove = this.onMove.bind(this);
+    this.onEnd = this.onEnd.bind(this);
+    this.onResize = debounce(this.onResize.bind(this), 200);
+  }
 }
+
+class NavButtons extends Carousel {}
 
 export default Carousel;

@@ -52,3 +52,16 @@ export function addClass(element, ...names) {
   names ? names : [];
   names.forEach((name) => element.classList.add(name));
 }
+
+export function debounce(callback, delay) {
+  let timer;
+
+  //...args se refere ao parâmetro da função, se tiver
+  return (...args) => {
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(() => {
+      callback(...args);
+      timer = null;
+    }, delay);
+  };
+}
