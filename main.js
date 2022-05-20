@@ -1,7 +1,7 @@
 import './style.css';
 import { NavButtons } from './js/classes/Carousel';
 import { Active } from './js/classes/Active';
-import { chooseIngredients, ingredients } from './js/ChooseIngredients';
+import { chooseIngredients, ingredients } from './js/IngredientsChosen';
 import { onClick, onTouchStart } from './js/Commons';
 import { sucessPage } from './js/FetchFood';
 

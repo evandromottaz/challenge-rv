@@ -1,7 +1,3 @@
-import { onClick } from './Commons';
-import { onTouchStart } from './Commons';
-import { sucessPage } from './FetchFood';
-
 export const ingredients = new Object();
 
 export function chooseIngredients(item, section) {
