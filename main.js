@@ -1,5 +1,5 @@
 import './style.css';
-import { Carousel } from './js/Carousel';
-import { Active } from './js/Active';
+import { Carousel } from './js/classes/Carousel';
+import { Active } from './js/classes/Active';
 import { ChooseIngredients } from './js/ChooseIngredients';
 import { FetchFood } from './js/FetchFood';
