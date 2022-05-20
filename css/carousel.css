@@ -3,11 +3,12 @@
   flex-direction: column-reverse;
   z-index: 10;
   overflow: hidden;
+  max-width:1440px;
+  margin:0 auto;
 }
 
 .carousel-container {
-  display: grid;
-  grid-template-columns: repeat(3, auto);
+  display: flex;
   padding: 32px 16px 24px;
   gap: 0 16px;
 }
@@ -28,6 +29,10 @@
   border: none;
 }
 
+.carousel-panel button:hover {
+  background-color: var(--red);
+}
+
 .carousel-panel button.selected {
   background-color: var(--red);
   width: 36px;
@@ -35,6 +40,7 @@
 }
 
 .item {
+  flex-shrink: 0;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -48,19 +54,23 @@
 }
 
 /* Carousel classes */
-.item.active:hover, .item.active, .item.selected {
+.item.active, 
+.item[data-selected="true"] {
   background-color: var(--blue);
 }
 
-.item.active:hover .item-title, .item.selected .item-title {
+.item.active .item-title,
+.item[data-selected="true"] .item-title {
   color: white;
 }
 
-.item.active:hover .item-description, .item.selected .item-description {
+.item.active .item-description,
+.item[data-selected="true"] .item-description {
   color: white;
 }
 
-.item.active:hover .item-price, .item.selected .item-price {
+.item.active .item-price,
+.item[data-selected="true"] .item-price {
   color: var(--yellow);
 }
 

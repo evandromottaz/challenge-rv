@@ -104,33 +104,6 @@
   padding: 0 16px;
 }
 
-/* items to change img */
-.salt:hover,.salt:click {
-  content: url('../public/images/icons/salt/salt-active.svg');
-}
-
-.shoyu:hover,.shoyu:click {
-  content: url('../public/images/icons/shoyu/shoyu-active.svg');
-}
-
-.miso:hover,.miso:click {
-  content: url('../public/images/icons/miso/miso-active.svg');
-}
-
-.chasu:hover,.item:click .chasu {
-  content: url('../public/images/icons/chasu/chasu-active.svg');
-}
-
-.item:click .yasai {
-  content: url('../public/images/icons/yasai/yasai-active.svg');
-}
-
-.karaague:hover,.karaague:click {
-  content: url('../public/images/icons/karaague/karaague-active.svg');
-}
-
-
-
 .item-title {
   color: var(--blue);
   font-weight: 900;
@@ -158,3 +131,23 @@
   display: none;
 }
 
+#submit.ready {
+  background-color: var(--blue);
+}
+
+#submit.ready span {
+  position: absolute;
+  animation: arrowLeft 1s infinite ease-in-out
+}
+
+@keyframes arrowLeft {
+  0% {
+    right:20px
+  }
+  50% {
+    right:30px
+  }
+  100% {
+    right:20px
+  }
+}
