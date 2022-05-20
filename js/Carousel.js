@@ -1,6 +1,14 @@
-import { debounce, onClick, onDown, onTouchStart, onUp } from './Commons';
+import { Active } from './Active';
+import {
+  addClass,
+  debounce,
+  onDown,
+  onTouchStart,
+  onUp,
+  removeClass,
+} from './Commons';
 
-class Carousel {
+export class Carousel {
   constructor(carousel) {
     this.carousel = document.querySelector(carousel);
     this.container = this.carousel.querySelector('.carousel-container');
@@ -65,13 +73,13 @@ class Carousel {
   events() {
     window.addEventListener('resize', this.onResize);
     this.items.forEach(({ item }) => {
-      onTouchStart(item, () => this.onClick());
+      onTouchStart(item, () => this.onClickTouch());
     });
     onDown(this.carousel, this.onStart);
     onUp(this.carousel, this.onEnd);
   }
 
-  onClick() {
+  onClickTouch() {
     this.dist.movement = 0;
   }
 
@@ -89,6 +97,8 @@ class Carousel {
     this.moveCarousel(currentItem.position);
     this.itemIndex(index);
     this.dist.finalPosition = currentItem.position;
+    this.buttons.forEach((button) => removeClass(button, this.selectedClass));
+    addClass(this.buttons[index], this.selectedClass);
   }
 
   activePrevItem() {
@@ -109,6 +119,7 @@ class Carousel {
       const gap = window.getComputedStyle(this.container).gap;
       const containerWidth = this.container.offsetWidth;
       const itemRight = item.getBoundingClientRect().right;
+
       const clean = +gap.replace(/px\s?/g, '');
       return -itemRight + containerWidth - clean;
     }
@@ -125,15 +136,14 @@ class Carousel {
     setTimeout(() => {
       this.config();
       this.changeItem(this.index.current);
-      console.log('oi');
     }, 1000);
   }
 
   init() {
     this.bind();
     this.config();
-    this.itemIndex(0);
     this.events();
+    this.itemIndex(0);
     return this;
   }
 
@@ -145,6 +155,73 @@ class Carousel {
   }
 }
 
-class NavButtons extends Carousel {}
+export class NavButtons extends Carousel {
+  constructor(carousel, container) {
+    super(carousel, container);
+    this.bindButtonsEvents();
+    this.selectedClass = 'selected';
+  }
+  createButtons() {
+    const panel = this.carousel.querySelector('.carousel-panel');
+    this.items.forEach(() => {
+      const createButton = document.createElement('button');
+      panel.appendChild(createButton);
+    });
+    return panel;
+  }
 
-export default Carousel;
+  desactiveButtons() {
+    this.buttons.forEach((button) => removeClass(button, this.selectedClass));
+  }
+
+  getClassImgContainer(item, index) {
+    const grandfather = item.parentElement.parentElement;
+    const carouselClasses = grandfather.getAttribute('class');
+    const carouselClass = carouselClasses.replace('carousel ', '');
+
+    const active = new Active(`.${carouselClass} .carousel-container`);
+    active.onClickImg(this.items[index]);
+  }
+
+  activeButton(item) {
+    const indexItem = this.index.current;
+    this.desactiveButtons();
+
+    // to use class Active
+    this.getClassImgContainer(item, indexItem);
+    console.log(this.index.current);
+    addClass(this.buttons[indexItem], this.selectedClass);
+  }
+
+  eventButtons(item, index) {
+    item.addEventListener('click', (event) => {
+      event.preventDefault();
+      this.changeItem(index);
+      this.activeButton(item);
+    });
+
+    this.container.addEventListener('changeEvent', () =>
+      this.activeButton(item),
+    );
+  }
+
+  addButtons() {
+    this.panel = this.createButtons();
+    this.buttons = [...this.panel.children];
+    this.buttons.forEach((item, index) => this.eventButtons(item, index));
+  }
+
+  bindButtonsEvents() {
+    this.eventButtons = this.eventButtons.bind(this);
+  }
+}
+
+function isMobile() {
+  if (matchMedia('(max-width:770px)').matches) {
+    const carouselBroth = new NavButtons('.carousel-1');
+    carouselBroth.addButtons();
+    const carouselMeat = new NavButtons('.carousel-2');
+    carouselMeat.addButtons();
+  }
+}
+isMobile();

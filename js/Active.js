@@ -5,11 +5,13 @@ import {
   onEnter,
   onLeave,
   onTouchStart,
+  removeClass,
 } from './Commons';
 
-class Active {
+export class Active {
   constructor(container) {
     this.container = document.querySelector(container);
+    this.active = 'active';
     this.items = [...this.container.querySelectorAll('.item')].map(
       (item, index) => {
         const name = item.querySelector('.item-title').innerText;
@@ -36,18 +38,18 @@ class Active {
   }
 
   onHoverLeave(itemObj) {
-    this.removeClass();
+    this.removeClassItems();
     this.replaceImgActive(itemObj);
   }
 
   onHover(itemObj) {
-    addClass(itemObj.item, 'active');
+    addClass(itemObj.item, this.active);
     this.replaceImgActive(itemObj);
   }
 
   onClickImg(itemObj) {
     this.removeSelected();
-    this.removeClass();
+    this.removeClassItems();
     itemObj.item.setAttribute('data-selected', 'true');
     this.replaceImgActive(itemObj);
   }
@@ -56,15 +58,15 @@ class Active {
     this.items.forEach(({ item }) => item.removeAttribute('data-selected'));
   }
 
-  removeClass() {
-    this.items.forEach((itemObj) => {
-      itemObj.item.classList.remove('active');
+  removeClassItems() {
+    this.items.forEach(({ item }) => {
+      removeClass(item, this.active);
     });
   }
 
   replaceImgActive() {
     this.items.forEach(({ img, name, item }) => {
-      const hasActive = item.classList.contains('active');
+      const hasActive = item.classList.contains(this.active);
       const hasSelected = item.getAttribute('data-selected');
       name = cleanNameWithUnderline(name);
 
@@ -75,4 +77,5 @@ class Active {
   }
 }
 
-export default Active;
+new Active('.items-1');
+new Active('.items-2');

@@ -1,3 +1,4 @@
+@import './pre-order.css';
 @media(min-width:1005px) {
   #preOrder .logo {
     position: absolute;

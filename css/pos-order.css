@@ -1,12 +1,12 @@
 /* posOrder page */
 #posOrder header {
-  height: 768px;
+  height: 677px;
   width: 100%;
   background-image: url('/images/pattern-azul.png');
   background-size: 145%;
-  background-position: 69px 37px;
+  background-position: 0 104px;
   display: grid;
-  grid-template-rows: 107px auto 1fr;
+  grid-template-rows: 100px 400px 1fr;
   grid-template-columns: 1fr;
   justify-items: center;
   align-items: start;
@@ -17,7 +17,7 @@
 }
 
 #posOrder .chosen-food img {
-  margin: 0 auto;
+  margin-top: -2rem;
 }
 
 #posOrder .chosen-food-text {

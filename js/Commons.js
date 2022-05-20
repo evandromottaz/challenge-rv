@@ -7,7 +7,7 @@ export function createElement(element) {
 }
 
 export function onClick(item, handleClick) {
-  item.addEventListener('click', handleClick);
+  item.addEventListener('click', (ev) => handleClick(ev));
 }
 
 export function onEnter(item, handleEnter) {
@@ -51,6 +51,10 @@ export function onResize(element, handleResize) {
 export function addClass(element, ...names) {
   names ? names : [];
   names.forEach((name) => element.classList.add(name));
+}
+
+export function removeClass(element, className) {
+  element.classList.remove(className);
 }
 
 export function debounce(callback, delay) {

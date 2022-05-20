@@ -1,7 +1,8 @@
 import { GET_FOOD } from '../api';
+import { onClick } from './Commons';
 
 function changeContents(food) {
-  document.title = food.name;
+  document.title = 'ramenGO: ' + food.name;
   chosenImg.src = food.image;
   chosenImg.alt = food.name;
   chosenFoodText.innerHTML = food.name;
@@ -29,7 +30,7 @@ function replacePage(htmlText) {
   preOrderPage.setAttribute('id', 'posOrder');
   location.href = '#';
 
-  newOrderButton.addEventListener('click', onHome);
+  onClick(newOrderButton, onHome);
 }
 
 function onHome() {
