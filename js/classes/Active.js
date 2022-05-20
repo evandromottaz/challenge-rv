@@ -76,6 +76,3 @@ export class Active {
     });
   }
 }
-
-new Active('.items-1');
-new Active('.items-2');

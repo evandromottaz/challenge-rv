@@ -25,19 +25,3 @@ function saveLocalStorage(food) {
   const foodSaved = JSON.stringify(food);
   window.localStorage.setItem('order', foodSaved);
 }
-
-const sections = document.querySelectorAll('section');
-sections.forEach((section) => {
-  const items = section.querySelectorAll('.item');
-
-  items.forEach((item) => {
-    onClick(item, () => chooseIngredients(item, section));
-    onTouchStart(item, () => chooseIngredients(item, section));
-  });
-});
-
-onClick(submit, () => {
-  if (ingredients.meat && ingredients.broth)
-    sucessPage(ingredients.meat, ingredients.broth);
-});
-submit.addEventListener('click', () => {});

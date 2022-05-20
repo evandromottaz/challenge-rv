@@ -215,13 +215,3 @@ export class NavButtons extends Carousel {
     this.eventButtons = this.eventButtons.bind(this);
   }
 }
-
-function isMobile() {
-  if (matchMedia('(max-width:770px)').matches) {
-    const carouselBroth = new NavButtons('.carousel-1');
-    carouselBroth.addButtons();
-    const carouselMeat = new NavButtons('.carousel-2');
-    carouselMeat.addButtons();
-  }
-}
-isMobile();
