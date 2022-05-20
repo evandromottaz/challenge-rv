@@ -126,17 +126,7 @@
   color: var(--red);
 }
 
-@keyframes arrowLeft {
-  0% {
-    right:20px
-  }
-  50% {
-    right:30px
-  }
-  100% {
-    right:20px
-  }
-}
+
 
 #preOrder .button-order-now {
   display: none;
@@ -157,3 +147,14 @@
   content: url('../images/icons/arrow-yellow.svg')
 }
 
+@keyframes arrowLeft {
+  0% {
+    right:20px
+  }
+  50% {
+    right:30px
+  }
+  100% {
+    right:20px
+  }
+}
