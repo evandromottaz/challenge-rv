@@ -6,7 +6,7 @@ import {
   onLeave,
   onTouchStart,
   removeClass,
-} from './Commons';
+} from '../Commons';
 
 export class Active {
   constructor(container) {

@@ -6,7 +6,7 @@ import {
   onTouchStart,
   onUp,
   removeClass,
-} from './Commons';
+} from '..Commons';
 
 export class Carousel {
   constructor(carousel) {
