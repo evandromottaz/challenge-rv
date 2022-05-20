@@ -36,7 +36,8 @@ sections.forEach((section) => {
   });
 });
 
-submit.addEventListener('click', () => {
+onClick(submit, () => {
   if (ingredients.meat && ingredients.broth)
     sucessPage(ingredients.meat, ingredients.broth);
 });
+submit.addEventListener('click', () => {});
