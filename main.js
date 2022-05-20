@@ -19,6 +19,7 @@ function isMobile() {
 isMobile();
 
 const sections = document.querySelectorAll('section');
+
 sections.forEach((section) => {
   const items = section.querySelectorAll('.item');
 
