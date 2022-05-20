@@ -94,4 +94,6 @@
   background-position: center;
   width: 23px;
   height: 16px;
+  position: absolute;
+  animation: arrowLeft 1s infinite ease-in-out;
 }

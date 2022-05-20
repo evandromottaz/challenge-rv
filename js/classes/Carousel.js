@@ -6,7 +6,7 @@ import {
   onTouchStart,
   onUp,
   removeClass,
-} from '..Commons';
+} from '../Commons';
 
 export class Carousel {
   constructor(carousel) {
@@ -161,6 +161,7 @@ export class NavButtons extends Carousel {
     this.bindButtonsEvents();
     this.selectedClass = 'selected';
   }
+
   createButtons() {
     const panel = this.carousel.querySelector('.carousel-panel');
     this.items.forEach(() => {
@@ -189,7 +190,6 @@ export class NavButtons extends Carousel {
 
     // to use class Active
     this.getClassImgContainer(item, indexItem);
-    console.log(this.index.current);
     addClass(this.buttons[indexItem], this.selectedClass);
   }
 
