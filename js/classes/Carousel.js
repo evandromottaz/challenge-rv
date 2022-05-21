@@ -63,9 +63,10 @@ export class Carousel {
   }
 
   changeItemOnEnd() {
-    if (this.dist.movement > 120 && this.index.next !== null)
+    const moveTo = innerWidth / 2;
+    if (this.dist.movement > moveTo && this.index.next !== null)
       this.changeItem(this.index.next);
-    else if (this.dist.movement < -120 && this.index.prev !== null)
+    else if (this.dist.movement < -moveTo && this.index.prev !== null)
       this.changeItem(this.index.prev);
     else this.changeItem(this.index.current);
   }
