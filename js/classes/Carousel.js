@@ -23,7 +23,12 @@ export class Carousel {
 
   updatePosition(clientX) {
     this.dist.movement = (this.dist.startX - clientX) * 1.5;
-    return this.dist.finalPosition - this.dist.movement;
+    let calcDist = this.dist.finalPosition - this.dist.movement;
+    const lastPositionItem = this.items[this.lastItemIndex].position;
+
+    if (calcDist > 0) return (calcDist = 0);
+    else if (calcDist < lastPositionItem) return (calcDist = lastPositionItem);
+    else return calcDist;
   }
 
   onStart(event) {
@@ -63,12 +68,21 @@ export class Carousel {
   }
 
   changeItemOnEnd() {
-    const moveTo = innerWidth / 2;
+    const moveTo = 130;
     if (this.dist.movement > moveTo && this.index.next !== null)
       this.changeItem(this.index.next);
     else if (this.dist.movement < -moveTo && this.index.prev !== null)
       this.changeItem(this.index.prev);
     else this.changeItem(this.index.current);
+  }
+
+  changeItem(index) {
+    const currentItem = this.items[index];
+    this.moveCarousel(currentItem.position);
+    this.itemIndex(index);
+    this.dist.finalPosition = currentItem.position;
+    this.buttons.forEach((button) => removeClass(button, this.selectedClass));
+    addClass(this.buttons[index], this.selectedClass);
   }
 
   events() {
@@ -89,17 +103,8 @@ export class Carousel {
     this.index = {
       prev: index ? index - 1 : null,
       current: index,
-      next: index === this.lastItem ? null : index + 1,
+      next: index === this.lastItemIndex ? null : index + 1,
     };
-  }
-
-  changeItem(index) {
-    const currentItem = this.items[index];
-    this.moveCarousel(currentItem.position);
-    this.itemIndex(index);
-    this.dist.finalPosition = currentItem.position;
-    this.buttons.forEach((button) => removeClass(button, this.selectedClass));
-    addClass(this.buttons[index], this.selectedClass);
   }
 
   activePrevItem() {
@@ -111,9 +116,9 @@ export class Carousel {
   }
 
   itemPosition(item, index) {
-    this.lastItem = this.container.querySelectorAll('.item').length - 1;
+    this.lastItemIndex = this.container.querySelectorAll('.item').length - 1;
     if (index === 0) return 0;
-    else if (index > 0 && index < this.lastItem) {
+    else if (index > 0 && index < this.lastItemIndex) {
       const margin = (-item.offsetWidth + innerWidth) / 2;
       return -(item.offsetLeft - margin); //posição do elemento - margin da tela
     } else {
