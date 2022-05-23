@@ -68,8 +68,6 @@ export class Carousel {
   }
 
   changeItemOnEnd() {
-    console.log(this.dist.finalPosition);
-
     const moveTo = 130;
 
     if (this.dist.movement > moveTo && this.index.next !== null)
@@ -165,10 +163,14 @@ export class NavButtons extends Carousel {
 
   createButtons() {
     const panel = this.carousel.querySelector('.carousel-panel');
-    this.items.forEach(() => {
-      const createButton = document.createElement('button');
-      panel.appendChild(createButton);
-    });
+    const buttons = [...panel.children];
+    if (buttons.length < this.items.length) {
+      this.items.forEach(() => {
+        const createButton = document.createElement('button');
+        panel.appendChild(createButton);
+      });
+    }
+
     return panel;
   }
 
