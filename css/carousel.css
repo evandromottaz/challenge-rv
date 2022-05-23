@@ -23,6 +23,7 @@
 .carousel-panel button {
   height: 12px;
   width: 12px;
+  /* padding:8px; */
   background-color: #e0dbbf;
   transition: 0.3s;
   border-radius: 8px;

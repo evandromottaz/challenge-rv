@@ -68,7 +68,10 @@ export class Carousel {
   }
 
   changeItemOnEnd() {
+    console.log(this.dist.finalPosition);
+
     const moveTo = 130;
+
     if (this.dist.movement > moveTo && this.index.next !== null)
       this.changeItem(this.index.next);
     else if (this.dist.movement < -moveTo && this.index.prev !== null)
@@ -105,14 +108,6 @@ export class Carousel {
       current: index,
       next: index === this.lastItemIndex ? null : index + 1,
     };
-  }
-
-  activePrevItem() {
-    if (this.index.prev !== null) this.changeItem(this.index.prev);
-  }
-
-  activeNextItem() {
-    if (this.index.next !== null) this.changeItem(this.index.next);
   }
 
   itemPosition(item, index) {
@@ -201,6 +196,12 @@ export class NavButtons extends Carousel {
 
   eventButtons(item, index) {
     item.addEventListener('click', (event) => {
+      event.preventDefault();
+      this.changeItem(index);
+      this.activeButton(item);
+    });
+
+    onTouchStart(item, (event) => {
       event.preventDefault();
       this.changeItem(index);
       this.activeButton(item);
