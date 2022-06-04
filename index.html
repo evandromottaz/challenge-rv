@@ -1,196 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;800;900&display=swap"
-      rel="stylesheet"
-    />
-    <title>ramenGO!</title>
-  </head>
-  <body>
-    <div id="preOrder">
-      <header data-header>
-        <figure class="logo" id="logo">
-          <img src="/images/header/logo.svg" alt="website logo" />
-        </figure>
-        <div class="header-container">
-          <figure class="delivery">
-            <div class="circle"></div>
 
-            <img
-              class="blue-ballon"
-              src="/images/header/balao-azul.svg"
-              alt="blue balloon image"
-            />
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/style/main.css" />
+  <title>ramenGO!</title>
+</head>
 
-            <img
-              class="yellow-ballon"
-              src="/images/header/balao-amarelo.svg"
-              alt="yellow balloon image"
-            />
+<body class="wrapper">
 
-            <img
-              src="/images/header/entregadora.png"
-              alt="delivery woman image"
-            />
-          </figure>
+  <!-- HEADER -->
 
-          <div class="header-container-content">
-            <p class="japan-header-text">ラーメン</p>
+  <header class="header">
+    <img class="header__logo" src="/images/header/logo.svg" alt="ramengoGo! logo">
 
-            <h1 class="go">GO!</h1>
+    <img class="header__delivery-img" src="/images/header/delivery.png" alt="delivery woman" />
 
-            <p class="bottom-header-text">
-              Enjoy a good ramen in the comfort of your house. Create your own
-              ramen and choose your favorite flavour combination!
-            </p>
+    <h1 class="header__titles">
+      <span class="header__japan-text">ラ l メ ン</span>
+      <span class="header__GO">GO!</span>
+    </h1>
 
-            <a href="#broth" class="button button-order-now">
-              ORDER NOW
-              <span>
-                <img src="/images/icons/arrow-yellow.svg" alt="arrow icon" />
-              </span>
-            </a>
-          </div>
-        </div>
-      </header>
+    <p class="text header__intro">
+      Enjoy a good ramen in the comfort of your house. Create
+      your own ramen and choose your favorite flavour
+      combination!
+    </p>
 
-      <main>
-        <section data-ingredient="broth" id="broth">
-          <h2 class="section-title">
-            First things first: select your favorite broth.
-          </h2>
+    <a href="#broth" class="btn btn--is-active header__btn">ORDER NOW<span class="header__arrow"></span></a>
+  </header>
 
-          <p class="section-subtitle">
-            It will give the whole flavor on your ramen soup.
-          </p>
+  <main>
 
-          <div class="carousel carousel-1">
-            <nav class="carousel-panel"></nav>
-            <div class="carousel-container items-1">
-              <figure class="item">
-                <img
-                  src="/images/icons/salt/salt-inactive.svg"
-                  alt="salt image"
-                />
+    <!-- Broth Section -->
 
-                <h3 class="item-title">Salt</h3>
+    <section class="menu" aria-label="Menu">
+      <h2 class="menu__title">First things first: select your favorite broth.</h2>
+      <p class="menu__subtitle">It will give the whole flavor on your ramen soup.</p>
 
-                <small class="item-description"
-                  >Simple like the seawater, nothing more
-                </small>
+      <ul class="wrapper">
+        <li class="card">
+          <img class="card__img" src="/images/icons/salt/salt-inactive.svg" alt="salt image" />
+          <h4 class="card__title">Salt</h4>
+          <p class="card__description">Simple like the seawater, nothing more</p>
+          <strong class="card__price">US$ 10</strong>
+        </li>
 
-                <strong class="item-price">US$ 10</strong>
-              </figure>
+        <li class="card">
+          <img class="card__img" src="/images/icons/salt/salt-inactive.svg" alt="salt image" />
+          <h4 class="card__title">Salt</h4>
+          <p class="card__description">Simple like the seawater, nothing more</p>
+          <strong class="card__price">US$ 10</strong>
+        </li>
 
-              <figure class="item">
-                <img
-                  src="/images/icons/shoyu/shoyu-inactive.svg"
-                  alt="shoyo image"
-                />
+        <li class="card">
+          <img class="card__img" src="/images/icons/salt/salt-inactive.svg" alt="salt image" />
+          <h4 class="card__title">Salt</h4>
+          <p class="card__description">Simple like the seawater, nothing more</p>
+          <strong class="card__price">US$ 10</strong>
+        </li>
+      </ul>
+    </section>
 
-                <h3 class="item-title">Shoyu</h3>
+  </main>
 
-                <small class="item-description"
-                  >The good old and traditional soy sauce</small
-                >
+  <footer>
+    <button class="btn">
+      Place my order
+      <img src="/images/icons/arrow-white.svg" alt="arrow icon" class="btn__arrow" />
+    </button>
+  </footer>
+</body>
 
-                <strong class="item-price">US$ 10</strong>
-              </figure>
-
-              <figure class="item">
-                <img
-                  src="/images/icons/miso/miso-inactive.svg"
-                  alt="miso image"
-                />
-
-                <h3 class="item-title">Miso</h3>
-
-                <small class="item-description"
-                  >Paste made of fermented soybeans
-                </small>
-
-                <strong class="item-price">US$ 12</strong>
-              </figure>
-            </div>
-          </div>
-        </section>
-
-        <section data-ingredient="meat" id="meat">
-          <h2 class="section-title">It’s time to choose (or not) your meat!</h2>
-
-          <p class="section-subtitle">
-            Some people love, some don’t. We have options for all tastes.
-          </p>
-
-          <div class="carousel carousel-2">
-            <div class="carousel-panel"></div>
-            <div class="carousel-container items-2">
-              <figure class="item">
-                <img
-                  src="/images/icons/chasu/chasu-inactive.svg"
-                  alt="chasu image"
-                />
-
-                <h3 class="item-title">Chasu</h3>
-
-                <small class="item-description"
-                  >A sliced flavourful pork meat with a selection of season
-                  vegetables.
-                </small>
-
-                <strong class="item-price">US$ 10</strong>
-              </figure>
-
-              <figure class="item">
-                <img
-                  src="/images/icons/yasai_vegetarian/yasai_vegetarian-inactive.svg"
-                  alt="yasai vegetarian image"
-                />
-
-                <h3 class="item-title">Yasai Vegetarian</h3>
-
-                <small class="item-description"
-                  >A delicious vegetarian lamen with a selection of season
-                  vegetables.</small
-                >
-
-                <strong class="item-price">US$ 10</strong>
-              </figure>
-
-              <figure class="item">
-                <img
-                  src="/images/icons/karaague/karaague-inactive.svg"
-                  alt="karaague image"
-                />
-
-                <h3 class="item-title">Karaague</h3>
-
-                <small class="item-description"
-                  >Three units of fried chicken, moyashi, ajitama egg and other
-                  vegetables.
-                </small>
-
-                <strong class="item-price">US$ 12</strong>
-              </figure>
-            </div>
-          </div>
-        </section>
-
-        <button type="button" id="submit" class="button">
-          Place my order
-          <span>
-            <img src="/images/icons/arrow-white.svg" alt="arrow icon" />
-          </span>
-        </button>
-      </main>
-    </div>
-
-    <script type="module" src="/main.js"></script>
-  </body>
 </html>
