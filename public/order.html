@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR" style="font-size: 21px">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <title>ramenGO!</title>
+  </head>
+  <body>
+    <div id="posOrder">
+      <header>
+        <figure class="logo">
+          <img src="/images/header/logo-red.svg" alt="website logo" />
+        </figure>
+
+        <figure class="chosen-food">
+          <img id="chosenImg" src="" alt="" />
+        </figure>
+
+        <div class="chosen-food-text">
+          <p>Your Order:</p>
+          <h2 id="chosenFoodText">Shoyu and Karaague Ramen</h2>
+        </div>
+      </header>
+      <main>
+        <figure class="greetings">
+          <img src="/images/bowing.svg" alt="greetings image" />
+          <p class="japan-word">どもありがとうございます。</p>
+        </figure>
+
+        <h1>Your order is being prepared</h1>
+
+        <p>Hold on, when you least expect you will be eating your rámen.</p>
+
+        <button type="button" id="newOrderButton" data-newOrder class="button">
+          Place new order
+          <span> </span>
+        </button>
+      </main>
+    </div>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
